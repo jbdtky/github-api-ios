@@ -17,6 +17,6 @@ Search a repository using the Github API.
 - Setup Repo + CI ✅
 - Setup UI + API base ✅
 - Call github search API ✅
-- Implement network throttling
-- Implement debounce on tap
+- Implement network throttling ✅
+- Implement debounce on tap ✅
 - Write tests
