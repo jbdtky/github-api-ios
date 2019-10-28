@@ -9,6 +9,14 @@
 Search a repository using the Github API.
 
 ## Requirements
-- Make a search screen that allows the user to search for repositories on Github
-- Do NOT use any third party libraries i.e RxSwit / Moya
+- Make a search screen that allows the user to search for repositories on Github ✅
+- Do NOT use any third party libraries i.e RxSwit / Moya ✅
 - Implement network throttling
+
+## Backlogs
+- Setup Repo + CI ✅
+- Setup UI + API base ✅
+- Call github search API ✅
+- Implement network throttling
+- Implement debounce on tap
+- Write tests
