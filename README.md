@@ -19,4 +19,4 @@ Search a repository using the Github API.
 - Call github search API ✅
 - Implement network throttling ✅
 - Implement debounce on tap ✅
-- Write tests
+- Write some tests with some mocks ✅
