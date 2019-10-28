@@ -15,7 +15,7 @@ enum RequestError: Error {
 class APIRequest {
     
     private let _urlRequest: URLRequest
-    private let _completion: (Result<Data, Error>) -> ()
+    let _completion: (Result<Data, Error>) -> ()
     
     init(_ urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         #if DEBUG

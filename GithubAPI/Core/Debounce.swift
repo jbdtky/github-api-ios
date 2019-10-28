@@ -15,18 +15,18 @@ import Foundation
 //
 class Debounce {
 
-    private var workItem: DispatchWorkItem = DispatchWorkItem(block: {})
-    private var previousRun: Date = Date.distantPast
-    private let queue: DispatchQueue
-    private let minimumDelay: TimeInterval
+    private var _workItem: DispatchWorkItem = DispatchWorkItem(block: {})
+    private var _previousRun: Date = Date.distantPast
+    private let _queue: DispatchQueue
+    private let _minimumDelay: TimeInterval
 
     init(minimumDelay: TimeInterval, queue: DispatchQueue = DispatchQueue.main) {
         #if DEBUG
         print("init Debounce")
         #endif
         
-        self.minimumDelay = minimumDelay
-        self.queue = queue
+        _minimumDelay = minimumDelay
+        _queue = queue
     }
     
     deinit {
@@ -36,15 +36,15 @@ class Debounce {
     }
 
     func debounce(_ block: @escaping () -> Void) {
-        workItem.cancel()
+        _workItem.cancel()
 
-        workItem = DispatchWorkItem() {
+        _workItem = DispatchWorkItem() {
             [weak self] in
-            self?.previousRun = Date()
+            self?._previousRun = Date()
             block()
         }
 
-        let delay = previousRun.timeIntervalSinceNow > minimumDelay ? 0 : minimumDelay
-        queue.asyncAfter(deadline: .now() + Double(delay), execute: workItem)
+        let delay = _previousRun.timeIntervalSinceNow > _minimumDelay ? 0 : _minimumDelay
+        _queue.asyncAfter(deadline: .now() + Double(delay), execute: _workItem)
     }
 }

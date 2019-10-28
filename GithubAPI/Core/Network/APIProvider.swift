@@ -11,15 +11,19 @@ import Foundation
 // Singleton
 class APIProvider {
     
-    private let throttler: APIThrottler
+    private let _throttler: APIThrottler
     
     init(maximumSimultaneously: Int? = nil, queue: DispatchQueue? = nil) {
-        throttler = APIThrottler(maximumSimultaneously: maximumSimultaneously, queue: queue)
+        _throttler = APIThrottler(maximumSimultaneously: maximumSimultaneously, queue: queue)
+    }
+    
+    init(_ throttler: APIThrottler) {
+        _throttler = throttler
     }
     
     // Request
     func request(_ urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         let request = APIRequest(urlRequest, completion: completion)
-        throttler.enqueue(request)
+        _throttler.enqueue(request)
     }
 }

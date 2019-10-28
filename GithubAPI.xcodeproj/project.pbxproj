@@ -24,6 +24,14 @@
 		3B8AAF7F2366A43A002E880E /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF7E2366A43A002E880E /* URL+Extensions.swift */; };
 		3B8AAF852366D467002E880E /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF842366D467002E880E /* Debounce.swift */; };
 		3B8AAF892366E40E002E880E /* APIThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF882366E40E002E880E /* APIThrottler.swift */; };
+		3B8AAF8D2366EEC7002E880E /* APIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF8C2366EEC7002E880E /* APIServiceMock.swift */; };
+		3B8AAF902366EFF3002E880E /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF8F2366EFF3002E880E /* SearchPresenterTests.swift */; };
+		3B8AAF932366F527002E880E /* SearchViewControllerErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF922366F527002E880E /* SearchViewControllerErrorMock.swift */; };
+		3B8AAF952366F53A002E880E /* SearchViewControllerSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF942366F53A002E880E /* SearchViewControllerSuccessMock.swift */; };
+		3B8AAF9B2366F8C5002E880E /* APIThrottlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF9A2366F8C5002E880E /* APIThrottlerTests.swift */; };
+		3B8AAF9D2366FE7C002E880E /* APIProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF9C2366FE7C002E880E /* APIProviderTests.swift */; };
+		3B8AAF9F2367000F002E880E /* APIThrottlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF9E2367000F002E880E /* APIThrottlerMock.swift */; };
+		3B8AAFA123670030002E880E /* APIRequestMockWithDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAFA023670030002E880E /* APIRequestMockWithDelay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,14 @@
 		3B8AAF7E2366A43A002E880E /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3B8AAF842366D467002E880E /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		3B8AAF882366E40E002E880E /* APIThrottler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIThrottler.swift; sourceTree = "<group>"; };
+		3B8AAF8C2366EEC7002E880E /* APIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceMock.swift; sourceTree = "<group>"; };
+		3B8AAF8F2366EFF3002E880E /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
+		3B8AAF922366F527002E880E /* SearchViewControllerErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerErrorMock.swift; sourceTree = "<group>"; };
+		3B8AAF942366F53A002E880E /* SearchViewControllerSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerSuccessMock.swift; sourceTree = "<group>"; };
+		3B8AAF9A2366F8C5002E880E /* APIThrottlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIThrottlerTests.swift; sourceTree = "<group>"; };
+		3B8AAF9C2366FE7C002E880E /* APIProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProviderTests.swift; sourceTree = "<group>"; };
+		3B8AAF9E2367000F002E880E /* APIThrottlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIThrottlerMock.swift; sourceTree = "<group>"; };
+		3B8AAFA023670030002E880E /* APIRequestMockWithDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestMockWithDelay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +145,9 @@
 		3B8AAF4523667776002E880E /* GithubAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				3B8AAF972366F75E002E880E /* Core */,
+				3B8AAF962366F753002E880E /* App */,
+				3B8AAF912366F511002E880E /* Mocks */,
 				3B8AAF4623667776002E880E /* GithubAPITests.swift */,
 				3B8AAF4823667776002E880E /* Info.plist */,
 			);
@@ -225,6 +244,35 @@
 				3B8AAF7E2366A43A002E880E /* URL+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3B8AAF912366F511002E880E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3B8AAFA023670030002E880E /* APIRequestMockWithDelay.swift */,
+				3B8AAF8C2366EEC7002E880E /* APIServiceMock.swift */,
+				3B8AAF922366F527002E880E /* SearchViewControllerErrorMock.swift */,
+				3B8AAF942366F53A002E880E /* SearchViewControllerSuccessMock.swift */,
+				3B8AAF9E2367000F002E880E /* APIThrottlerMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		3B8AAF962366F753002E880E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3B8AAF8F2366EFF3002E880E /* SearchPresenterTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3B8AAF972366F75E002E880E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3B8AAF9A2366F8C5002E880E /* APIThrottlerTests.swift */,
+				3B8AAF9C2366FE7C002E880E /* APIProviderTests.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,7 +425,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8AAF902366EFF3002E880E /* SearchPresenterTests.swift in Sources */,
+				3B8AAF952366F53A002E880E /* SearchViewControllerSuccessMock.swift in Sources */,
+				3B8AAFA123670030002E880E /* APIRequestMockWithDelay.swift in Sources */,
+				3B8AAF9D2366FE7C002E880E /* APIProviderTests.swift in Sources */,
+				3B8AAF8D2366EEC7002E880E /* APIServiceMock.swift in Sources */,
 				3B8AAF4723667776002E880E /* GithubAPITests.swift in Sources */,
+				3B8AAF9F2367000F002E880E /* APIThrottlerMock.swift in Sources */,
+				3B8AAF932366F527002E880E /* SearchViewControllerErrorMock.swift in Sources */,
+				3B8AAF9B2366F8C5002E880E /* APIThrottlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

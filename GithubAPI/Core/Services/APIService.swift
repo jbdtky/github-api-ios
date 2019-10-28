@@ -9,15 +9,18 @@
 import Foundation
 
 protocol APIService {
-    var baseUrl: URL { get }
     func fetchRepositories(_ value: String, completion: @escaping (Result<[RepoData], Error>) -> ())
 }
 
 class APIServiceImpl: APIService {
     
-    var provider = APIProvider()
+    struct FetchRepositoriesResponse: Decodable {
+        var items: [RepoData]
+    }
     
-    var baseUrl: URL {
+    private var _provider: APIProvider
+    
+    private var _baseUrl: URL {
         guard let url = URL(string: "https://api.github.com") else {
             fatalError("should init successfully")
         }
@@ -25,16 +28,16 @@ class APIServiceImpl: APIService {
         return url
     }
     
-    struct FetchRepositoriesResponse: Decodable {
-        var items: [RepoData]
+    init(_ provider: APIProvider = APIProvider()) {
+        _provider = provider
     }
     
     func fetchRepositories(_ value: String, completion: @escaping (Result<[RepoData], Error>) -> ()) {
         
         // TODO: The request mays be improved by doing an enum as Moya does
-        return provider
+        return _provider
             .request(
-                URLRequest(url: baseUrl
+                URLRequest(url: _baseUrl
                     .appendingPathComponent("/search/repositories")
                     .appendingQuery("q=" + value))
             ) { result in

@@ -16,14 +16,14 @@ protocol SearchViewControllerDelegate: class {
 class SearchPresenter {
     
     weak var viewDelegate: SearchViewControllerDelegate?
-    private let service: APIService
+    private let _service: APIService
     
     init(_ service: APIService = APIServiceImpl()) {
         #if DEBUG
         print("init SearchPresenter")
         #endif
         
-        self.service = service
+        _service = service
     }
     
     deinit {
@@ -33,7 +33,7 @@ class SearchPresenter {
     }
     
     func updateSearchResults(_ value: String) {
-        service
+        _service
             .fetchRepositories(value) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {

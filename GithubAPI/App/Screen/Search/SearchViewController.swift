@@ -12,9 +12,9 @@ class SearchViewController: UITableViewController {
     
     var presenter: SearchPresenter?
     
-    private let searchDebounce: Debounce = Debounce(minimumDelay: 0.5)
-    private let cellId: String = "cellId"
-    private var items: [RepoData]? {
+    private let _searchDebounce: Debounce = Debounce(minimumDelay: 0.5)
+    private let _cellId: String = "cellId"
+    private var _items: [RepoData]? {
         didSet {
             tableView.reloadData()
         }
@@ -42,7 +42,7 @@ class SearchViewController: UITableViewController {
         navigationItem.searchController = searchVC
         
         // Setup UI Table
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: _cellId)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,13 +50,13 @@ class SearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items?.count ?? 0
+        return _items?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: _cellId, for: indexPath)
         
-        if let item = items?[indexPath.row] {
+        if let item = _items?[indexPath.row] {
             cell.textLabel?.text = item.name + " owned by " + item.owner.username
         }
         
@@ -71,7 +71,7 @@ class SearchViewController: UITableViewController {
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let value = searchController.searchBar.text, value.count > 0 {
-            searchDebounce.debounce { [weak self] in
+            _searchDebounce.debounce { [weak self] in
                 self?.presenter?.updateSearchResults(value)
             }
         }
@@ -80,7 +80,7 @@ extension SearchViewController: UISearchResultsUpdating {
 
 extension SearchViewController: SearchViewControllerDelegate {
     func showSearchResults(_ results: [RepoData]) {
-        items = results
+        _items = results
     }
     
     func showError(_ title: String, message: String) {
