@@ -10,6 +10,7 @@ import Foundation
 
 protocol SearchViewControllerDelegate: class {
     func showSearchResults(_ result: [RepoData])
+    func showError(_ title: String, message: String)
 }
 
 class SearchPresenter {
@@ -33,8 +34,15 @@ class SearchPresenter {
     
     func updateSearchResults(_ value: String) {
         service
-            .fetchRepositories(value) { [weak self] results in
-                self?.viewDelegate?.showSearchResults(results)
+            .fetchRepositories(value) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let repositories):
+                        self?.viewDelegate?.showSearchResults(repositories)
+                    case .failure(let error):
+                        self?.viewDelegate?.showError("Error fetching the repositories", message: error.localizedDescription)
+                    }
+                }
             }
     }
 }

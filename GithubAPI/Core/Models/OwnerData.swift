@@ -10,10 +10,10 @@ import Foundation
 
 struct OwnerData: Codable {
     var username: String
-    var avatarUrl: String?
+    var avatarUrl: String
     
-    enum Keys: CodingKey {
-        case login
-        case avatar_url
+    enum CodingKeys: String, CodingKey {
+        case username = "login"
+        case avatarUrl = "avatar_url"
     }
 }

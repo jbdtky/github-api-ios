@@ -69,7 +69,8 @@ class SearchViewController: UITableViewController {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if let value = searchController.searchBar.text {
+        // TODO: Implement a debounce here
+        if let value = searchController.searchBar.text, value.count > 0 {
             presenter?.updateSearchResults(value)
         }
     }
@@ -78,5 +79,12 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: SearchViewControllerDelegate {
     func showSearchResults(_ results: [RepoData]) {
         items = results
+    }
+    
+    func showError(_ title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        
+        present(alertVC, animated: true)
     }
 }
