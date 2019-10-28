@@ -3,4 +3,4 @@ osx_image: xcode11.1
 script:
   - xcodebuild -project GithubAPI.xcodeproj -scheme GithubAPI -destination platform\=iOS\ Simulator,OS\=13.1,name\=iPhone\ 11 -enableCodeCoverage YES test > /dev/null
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'GithubAPI' -t 256b3c8f-ae5a-4958-85b5-d5bbc86ebb83 > /dev/null
+  - bash <(curl -s https://codecov.io/bash) -J 'GithubAPI' -t 9365c847-f84b-4313-989f-990f1247bb0f > /dev/null
