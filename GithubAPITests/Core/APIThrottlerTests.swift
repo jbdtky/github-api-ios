@@ -15,7 +15,7 @@ class APIThrottlerTests: XCTestCase {
         let throttler = APIThrottler(maximumSimultaneously: 1)
         
         let group = DispatchGroup()
-        let amountOfRequest = 5
+        let amountOfRequest = 2
         var shouldBeId = 0
         
         for i in 0...amountOfRequest {

@@ -23,21 +23,28 @@ class GithubAPIUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testBasicFlow() {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+        
+        let githubRepositoryNavigationBar = XCUIApplication().navigationBars["Github Repository"]
+        let searchRepositorySearchField = githubRepositoryNavigationBar.searchFields["Search repository"]
+        searchRepositorySearchField.tap()
+        searchRepositorySearchField.typeText("Test")
+        githubRepositoryNavigationBar.buttons["Cancel"].tap()
+        
+        let expection = XCTestExpectation(description: "result")
+        
+        // The research should reach a result before 3s...
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            let tablesQuery = app.tables
+            XCTAssertGreaterThan(tablesQuery.count, 0)
+            
+            expection.fulfill()
         }
+        
+        wait(for: [expection], timeout: 5)
     }
 }
