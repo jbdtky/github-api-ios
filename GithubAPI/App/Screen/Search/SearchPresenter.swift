@@ -32,7 +32,9 @@ class SearchPresenter {
     }
     
     func updateSearchResults(_ value: String) {
-        let results = service.fetchRepositories(value)
-        viewDelegate?.showSearchResults(results)
+        service
+            .fetchRepositories(value) { [weak self] results in
+                self?.viewDelegate?.showSearchResults(results)
+            }
     }
 }

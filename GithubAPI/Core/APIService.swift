@@ -9,11 +9,11 @@
 import Foundation
 
 protocol APIService {
-    func fetchRepositories(_ value: String) -> [RepoData]
+    func fetchRepositories(_ value: String, completion: @escaping ([RepoData]) -> ())
 }
 
 class APIServiceImpl: APIService {
-    func fetchRepositories(_ value: String) -> [RepoData] {
-        return [RepoData(name: "GithubAPI", owner: OwnerData(username: "jbdtky", avatarUrl: nil))]
+    func fetchRepositories(_ value: String, completion: @escaping ([RepoData]) -> ()) {
+        completion([RepoData(name: "GithubAPI", owner: OwnerData(username: "jbdtky", avatarUrl: nil))])
     }
 }
