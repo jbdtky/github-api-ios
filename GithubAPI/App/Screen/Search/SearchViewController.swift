@@ -12,6 +12,7 @@ class SearchViewController: UITableViewController {
     
     var presenter: SearchPresenter?
     
+    private let searchDebounce: Debounce = Debounce(minimumDelay: 0.5)
     private let cellId: String = "cellId"
     private var items: [RepoData]? {
         didSet {
@@ -69,9 +70,10 @@ class SearchViewController: UITableViewController {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO: Implement a debounce here
         if let value = searchController.searchBar.text, value.count > 0 {
-            presenter?.updateSearchResults(value)
+            searchDebounce.debounce { [weak self] in
+                self?.presenter?.updateSearchResults(value)
+            }
         }
     }
 }

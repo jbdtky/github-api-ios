@@ -20,8 +20,10 @@
 		3B8AAF6D23667E92002E880E /* RepoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF6C23667E92002E880E /* RepoData.swift */; };
 		3B8AAF6F23667EA9002E880E /* OwnerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF6E23667EA9002E880E /* OwnerData.swift */; };
 		3B8AAF7523668F00002E880E /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF7423668F00002E880E /* APIProvider.swift */; };
-		3B8AAF7723668F23002E880E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF7623668F22002E880E /* Request.swift */; };
+		3B8AAF7723668F23002E880E /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF7623668F22002E880E /* APIRequest.swift */; };
 		3B8AAF7F2366A43A002E880E /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF7E2366A43A002E880E /* URL+Extensions.swift */; };
+		3B8AAF852366D467002E880E /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF842366D467002E880E /* Debounce.swift */; };
+		3B8AAF892366E40E002E880E /* APIThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AAF882366E40E002E880E /* APIThrottler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +63,10 @@
 		3B8AAF6C23667E92002E880E /* RepoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoData.swift; sourceTree = "<group>"; };
 		3B8AAF6E23667EA9002E880E /* OwnerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerData.swift; sourceTree = "<group>"; };
 		3B8AAF7423668F00002E880E /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
-		3B8AAF7623668F22002E880E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		3B8AAF7623668F22002E880E /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		3B8AAF7E2366A43A002E880E /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		3B8AAF842366D467002E880E /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
+		3B8AAF882366E40E002E880E /* APIThrottler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIThrottler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 		3B8AAF6923667C0A002E880E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3B8AAF842366D467002E880E /* Debounce.swift */,
 				3B8AAF7D2366A42E002E880E /* Extensions */,
 				3B8AAF7C23669A23002E880E /* Services */,
 				3B8AAF7323668921002E880E /* Network */,
@@ -200,7 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				3B8AAF7423668F00002E880E /* APIProvider.swift */,
-				3B8AAF7623668F22002E880E /* Request.swift */,
+				3B8AAF7623668F22002E880E /* APIRequest.swift */,
+				3B8AAF882366E40E002E880E /* APIThrottler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -359,8 +365,10 @@
 				3B8AAF6B23667C14002E880E /* APIService.swift in Sources */,
 				3B8AAF66236678D6002E880E /* SearchBuilder.swift in Sources */,
 				3B8AAF6D23667E92002E880E /* RepoData.swift in Sources */,
-				3B8AAF7723668F23002E880E /* Request.swift in Sources */,
+				3B8AAF7723668F23002E880E /* APIRequest.swift in Sources */,
+				3B8AAF852366D467002E880E /* Debounce.swift in Sources */,
 				3B8AAF6F23667EA9002E880E /* OwnerData.swift in Sources */,
+				3B8AAF892366E40E002E880E /* APIThrottler.swift in Sources */,
 				3B8AAF7523668F00002E880E /* APIProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

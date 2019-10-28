@@ -15,6 +15,8 @@ protocol APIService {
 
 class APIServiceImpl: APIService {
     
+    var provider = APIProvider()
+    
     var baseUrl: URL {
         guard let url = URL(string: "https://api.github.com") else {
             fatalError("should init successfully")
@@ -28,12 +30,14 @@ class APIServiceImpl: APIService {
     }
     
     func fetchRepositories(_ value: String, completion: @escaping (Result<[RepoData], Error>) -> ()) {
-        return APIProvider
-            .request(baseUrl
-                .appendingPathComponent("/search/repositories")
-                .appendingQuery("q=" + value))
-            .throttle(0.5)
-            .resume { result in
+        
+        // TODO: The request mays be improved by doing an enum as Moya does
+        return provider
+            .request(
+                URLRequest(url: baseUrl
+                    .appendingPathComponent("/search/repositories")
+                    .appendingQuery("q=" + value))
+            ) { result in
                 switch result {
                 case .success(let data):
                     do {
